@@ -330,9 +330,9 @@ module Fluent
         end
 
         if has_next
-          return Engine.now + @queued_chunk_flush_interval
+          return @next_flush_time + @queued_chunk_flush_interval
         else
-          return time + @try_flush_interval
+          return @next_flush_time + @try_flush_interval
         end
 
       rescue => e
